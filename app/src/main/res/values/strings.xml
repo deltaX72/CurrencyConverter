@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Currency Converter</string>
-    <string name="currency_converter_label">Currency converter</string>
+    <string name="currency_converter_head">Currency converter</string>
+    <string name="currencies_info">Info: 1 AMD = 1 RUB</string>
+
+    <string name="currencies_info_format">Info: %1$s %2$s = %3$s %4$s</string>
 </resources>

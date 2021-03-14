@@ -3,12 +3,13 @@ package com.litil.currencyconverter.domain.models
 import com.google.gson.annotations.SerializedName
 
 data class Currency(
-        @SerializedName("Date")
-        val date: String? = null,
-        @SerializedName("PreviousDate")
-        val prevDate: String? = null,
-        @SerializedName("Valute")
-        val currency: Map<String, Any>? = null,
-        @SerializedName("Timestamp")
-        val timestamp: String? = null
+        val id: Long = -1,
+        @SerializedName("Name")
+        val name: String = "Российский рубль",
+        @SerializedName("CharCode")
+        val charCode: String = "RUB",
+        @SerializedName("Value")
+        val value: Double = 1.0,
+        @SerializedName("Previous")
+        val prevValue: Double = 1.0
 )
