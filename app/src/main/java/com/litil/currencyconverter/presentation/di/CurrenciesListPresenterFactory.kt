@@ -18,33 +18,13 @@ object CurrenciesListPresenterFactory {
     fun create(context: Context): CurrenciesListPresenter {
         val currencyDataSource = CurrencyHttpDataSourceImpl(RetrofitHolder.api)
         val currencyRepository = CurrencyRepositoryImpl(currencyDataSource)
-        val getHttpCurrenciesUseCase = GetHttpCurrenciesUseCase(currencyRepository)
 
         val currencyDatabaseDataSource = CurrencyDatabaseDataSourceImpl(CurrencyDatabase.getDatabase(context).getCurrencyDao)
         val currencyDatabaseRepository = CurrencyDatabaseRepositoryImpl(currencyDatabaseDataSource)
-        val createCurrencyDatabaseUseCase = CreateDatabaseCurrencyUseCase(currencyDatabaseRepository)
-        val getDatabaseCurrencyUseCase = GetDatabaseCurrenciesUseCase(currencyDatabaseRepository)
-//
-//        getHttpCurrenciesUseCase()
-//            .flatMap {
-//
-//            }
-//            .apply {
-//                this.valute?.values?.forEach {
-//                    createCurrencyDatabaseUseCase(
-//                        charCode = it.charCode,
-//                        name = it.name,
-//                        value = it.value,
-//                        prevValue = it.prevValue,
-//                        isChosen = false
-//                    )
-//                }
-//            }
 
         return CurrenciesListPresenter(
-            getHttpCurrenciesUseCase,
-            createCurrencyDatabaseUseCase,
-            getDatabaseCurrencyUseCase,
+            currencyRepository,
+            currencyDatabaseRepository,
             context
         )
     }

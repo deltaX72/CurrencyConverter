@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Currency::class], version = 1)
+@Database(entities = [CurrencyDBModel::class], version = 1)
 abstract class CurrencyDatabase : RoomDatabase() {
 
     abstract val getCurrencyDao: CurrencyDao

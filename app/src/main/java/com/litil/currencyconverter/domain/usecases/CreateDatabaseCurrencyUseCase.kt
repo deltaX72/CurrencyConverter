@@ -1,6 +1,6 @@
 package com.litil.currencyconverter.domain.usecases
 
-import com.litil.currencyconverter.data.schemas.Currency
+import com.litil.currencyconverter.data.schemas.CurrencyDBModel
 import com.litil.currencyconverter.domain.repositories.CurrencyDatabaseRepository
 import io.reactivex.Completable
 
@@ -12,6 +12,6 @@ class CreateDatabaseCurrencyUseCase(private val repository: CurrencyDatabaseRepo
         prevValue: Double,
         isChosen: Boolean = false
     ): Completable {
-        return this.repository.addCurrency(Currency(charCode, name, value, prevValue, isChosen))
+        return this.repository.addCurrency(CurrencyDBModel(charCode, name, value, prevValue, isChosen))
     }
 }
