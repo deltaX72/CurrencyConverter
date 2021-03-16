@@ -5,7 +5,7 @@ import com.litil.currencyconverter.domain.models.DailyCurrencyData
 import io.reactivex.Maybe
 import io.reactivex.Single
 
-interface CurrencyDataSource {
+interface CurrencyHttpDataSource {
     fun getCurrenciesList(): Single<DailyCurrencyData>
 
     fun getCurrency(id: Long): Maybe<Currency>

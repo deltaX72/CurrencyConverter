@@ -1,13 +1,14 @@
 package com.litil.currencyconverter.presentation.adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.litil.currencyconverter.R
 import com.litil.currencyconverter.domain.models.Currency
-import com.litil.currencyconverter.presentation.holders.CurrencyHolder
 
-class CurrencyAdapter(private val onClicked: (Currency) -> Unit): RecyclerView.Adapter<CurrencyHolder>() {
+class CurrencyAdapter(private val onClicked: (Currency) -> Unit): RecyclerView.Adapter<CurrencyAdapter.CurrencyHolder>() {
     var currenciesList: List<Currency> = emptyList()
         set(value) {
             field = value
@@ -29,4 +30,15 @@ class CurrencyAdapter(private val onClicked: (Currency) -> Unit): RecyclerView.A
         return this.currenciesList.count()
     }
 
+    inner class CurrencyHolder(itemView: View, private val onClicked: (Currency) -> Unit): RecyclerView.ViewHolder(itemView) {
+        private val currencyInfoText: TextView = this.itemView.findViewById(R.id.currency_info_text)
+
+        fun bind(currency: Currency) {
+            this.currencyInfoText.text = this.itemView.context.getString(
+                R.string.currencies_info_format,
+                "1.0", currency.charCode, currency.value.toString(), "RUB"
+            )
+            this.itemView.setOnClickListener { this.onClicked(currency) }
+        }
+    }
 }

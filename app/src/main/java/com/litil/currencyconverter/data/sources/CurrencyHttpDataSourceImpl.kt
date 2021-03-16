@@ -1,15 +1,13 @@
-package com.litil.currencyconverter.data.repositories
+package com.litil.currencyconverter.data.sources
 
 import com.litil.currencyconverter.data.api.CurrencyApi
-import com.litil.currencyconverter.data.sources.CurrencyDataSource
 import com.litil.currencyconverter.domain.models.Currency
 import com.litil.currencyconverter.domain.models.DailyCurrencyData
-import com.litil.currencyconverter.domain.models.Response
 import io.reactivex.Maybe
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 
-class CurrencyDataSourceImpl(private val api: CurrencyApi): CurrencyDataSource {
+class CurrencyHttpDataSourceImpl(private val api: CurrencyApi): CurrencyHttpDataSource {
     override fun getCurrenciesList(): Single<DailyCurrencyData> {
         return this.api.getCurrenciesList().subscribeOn(Schedulers.io())
     }

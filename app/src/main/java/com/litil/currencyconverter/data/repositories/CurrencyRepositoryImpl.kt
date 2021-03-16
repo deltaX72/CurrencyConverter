@@ -1,18 +1,18 @@
 package com.litil.currencyconverter.data.repositories
 
-import com.litil.currencyconverter.data.sources.CurrencyDataSource
+import com.litil.currencyconverter.data.sources.CurrencyHttpDataSource
 import com.litil.currencyconverter.domain.models.Currency
 import com.litil.currencyconverter.domain.models.DailyCurrencyData
 import com.litil.currencyconverter.domain.repositories.CurrencyRepository
 import io.reactivex.Maybe
 import io.reactivex.Single
 
-class CurrencyRepositoryImpl(private val currencyDataSource: CurrencyDataSource): CurrencyRepository {
+class CurrencyRepositoryImpl(private val currencyHttpDataSource: CurrencyHttpDataSource): CurrencyRepository {
     override fun getCurrenciesList(): Single<DailyCurrencyData> {
-        return this.currencyDataSource.getCurrenciesList()
+        return this.currencyHttpDataSource.getCurrenciesList()
     }
 
     override fun getCurrency(id: Long): Maybe<Currency> {
-        return this.currencyDataSource.getCurrency(id)
+        return this.currencyHttpDataSource.getCurrency(id)
     }
 }
