@@ -4,7 +4,7 @@ import com.litil.currencyconverter.domain.repositories.CurrencyDatabaseRepositor
 import io.reactivex.Single
 
 class IsEmptyDatabaseCurrencyUseCase(private val repository: CurrencyDatabaseRepository) {
-    operator fun invoke(): Single<Boolean> {
+    operator fun invoke(): Single<Int> {
         return this.repository.isEmpty()
     }
 }

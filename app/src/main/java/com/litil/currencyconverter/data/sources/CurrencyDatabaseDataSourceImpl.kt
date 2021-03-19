@@ -40,7 +40,7 @@ class CurrencyDatabaseDataSourceImpl(private val currencyDao: CurrencyDao): Curr
         return this.currencyDao.setChosen(charCode, isChosen).subscribeOn(Schedulers.io())
     }
 
-    override fun isEmpty(): Single<Boolean> {
+    override fun isEmpty(): Single<Int> {
         return this.currencyDao.isEmpty().subscribeOn(Schedulers.io())
     }
 }

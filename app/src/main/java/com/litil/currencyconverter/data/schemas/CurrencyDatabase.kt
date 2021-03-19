@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 @Database(entities = [CurrencyDBModel::class], version = 1)
 abstract class CurrencyDatabase : RoomDatabase() {
 
-    abstract val getCurrencyDao: CurrencyDao
+    abstract fun getCurrencyDao(): CurrencyDao
 
     companion object {
         private var INSTANCE: CurrencyDatabase? = null

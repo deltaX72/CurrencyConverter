@@ -40,7 +40,7 @@ class CurrencyDatabaseRepositoryImpl(private val source: CurrencyDatabaseDataSou
         return this.source.setChosen(charCode, if (isChosen) 1 else 0)
     }
 
-    override fun isEmpty(): Single<Boolean> {
+    override fun isEmpty(): Single<Int> {
         return this.source.isEmpty()
     }
 }

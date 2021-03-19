@@ -22,5 +22,5 @@ interface CurrencyDatabaseDataSource {
 
     fun setChosen(charCode: String, isChosen: Int): Completable
 
-    fun isEmpty(): Single<Boolean>
+    fun isEmpty(): Single<Int>
 }

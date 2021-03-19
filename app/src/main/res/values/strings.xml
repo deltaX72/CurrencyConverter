@@ -1,7 +1,15 @@
 <resources>
     <string name="app_name">Currency Converter</string>
     <string name="currency_converter_head">Currency converter</string>
-    <string name="currencies_info">Info: 1 AMD = 1 RUB</string>
+    <string name="currency_charcode">RUB</string>
+    <string name="currency_value_edit">73.28</string>
+    <string name="currency_name_text">Российский рубль</string>
 
-    <string name="currencies_info_format">Info: %1$s %2$s = %3$s %4$s</string>
+    <string name="currencies_menu_item">Details</string>
+
+    <string name="button_1">1</string>
+
+    <string name="currency_charcode_format">%1$s</string>
+    <string name="currency_value_edit_format">%1$s</string>
+    <string name="currency_name_format">%1$s</string>
 </resources>

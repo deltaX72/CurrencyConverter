@@ -3,6 +3,8 @@ package com.litil.currencyconverter.presentation.activities
 import android.os.Bundle
 import android.os.Handler
 import android.os.SystemClock
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewConfiguration
 import android.widget.Chronometer
@@ -20,6 +22,7 @@ import kotlin.concurrent.thread
 
 class CurrenciesListActivity : AppCompatActivity(), CurrenciesListView {
     private lateinit var currenciesList: RecyclerView
+//    private lateinit var menu: Menu
 
     private val presenter by lazy {
         CurrenciesListPresenterFactory.create(this)
@@ -28,7 +31,6 @@ class CurrenciesListActivity : AppCompatActivity(), CurrenciesListView {
     private val adapter = CurrencyAdapter {
 
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,11 +49,19 @@ class CurrenciesListActivity : AppCompatActivity(), CurrenciesListView {
 
     override fun onResume() {
         super.onResume()
+//        this.loadData()
         this.presenter.onViewResumed()
     }
 
     override fun bindCurrenciesList(list: List<Currency>) {
         this.adapter.currenciesList = list
+    }
+
+    override fun loadData(rows: Int) {
+//        if (rows == 0) {
+//            this.presenter.getCurrenciesList()
+//            this.presenter.loadToDatabase(this.presenter.listCurrency)
+//        }
     }
 
     override fun onDestroy() {
@@ -62,5 +72,10 @@ class CurrenciesListActivity : AppCompatActivity(), CurrenciesListView {
     private fun hasNavigationBar(): Boolean {
         val id = resources.getIdentifier("config_showNavigationBar", "bool", "android")
         return id > 0 && resources.getBoolean(id)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.currencies_menu, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 }

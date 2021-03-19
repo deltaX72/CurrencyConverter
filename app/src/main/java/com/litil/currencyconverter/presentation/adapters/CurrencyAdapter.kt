@@ -3,6 +3,7 @@ package com.litil.currencyconverter.presentation.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.litil.currencyconverter.R
@@ -31,12 +32,24 @@ class CurrencyAdapter(private val onClicked: (Currency) -> Unit): RecyclerView.A
     }
 
     inner class CurrencyHolder(itemView: View, private val onClicked: (Currency) -> Unit): RecyclerView.ViewHolder(itemView) {
-        private val currencyInfoText: TextView = this.itemView.findViewById(R.id.currency_info_text)
+        private val currencyCharCodeText: TextView = this.itemView.findViewById(R.id.currency_charcode_text)
+        private val currencyValueEdit: EditText = this.itemView.findViewById(R.id.currency_value_edit)
+        private val currencyNameText: TextView = this.itemView.findViewById(R.id.currency_name_text)
 
         fun bind(currency: Currency) {
-            this.currencyInfoText.text = this.itemView.context.getString(
-                R.string.currencies_info_format,
-                "1.0", currency.charCode, currency.value.toString(), "RUB"
+            this.currencyCharCodeText.text = this.itemView.context.getString(
+                R.string.currency_charcode_format,
+                currency.charCode
+            )
+            this.currencyValueEdit.setText(this.itemView.context.getString(
+                R.string.currency_value_edit_format,
+                "%.3f".format(1.0 / currency.value)
+//                String.format("%3f", 1.0 / currency.value)
+//            1.0 / currency.value
+            ))
+            this.currencyNameText.text = this.itemView.context.getString(
+                R.string.currency_name_format,
+                currency.name
             )
             this.itemView.setOnClickListener { this.onClicked(currency) }
         }

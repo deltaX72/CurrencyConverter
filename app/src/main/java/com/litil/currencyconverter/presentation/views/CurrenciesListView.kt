@@ -4,4 +4,5 @@ import com.litil.currencyconverter.domain.models.Currency
 
 interface CurrenciesListView: BaseView {
     fun bindCurrenciesList(list: List<Currency>)
+    fun loadData(rows: Int)
 }

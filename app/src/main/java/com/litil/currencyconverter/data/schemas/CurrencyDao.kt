@@ -33,5 +33,5 @@ interface CurrencyDao {
     fun setChosen(charCode: String, isChosen: Int): Completable
 
     @Query("SELECT COUNT(*) FROM currency")
-    fun isEmpty(): Single<Boolean>
+    fun isEmpty(): Single<Int>
 }
